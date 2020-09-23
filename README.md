@@ -1,5 +1,5 @@
 ### Dev. de Aplicações Modernas e Escaláveis com Microsserviços
-#### Exercício 01 - Publicando imagem Laravel 
+#### Exercício 02 - Publicando imagem Laravel com Dockerize
 
 URL da imagem Docker [aqui](https://hub.docker.com/r/willmsmoraes/ex_02_laravel)
 
