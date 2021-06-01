@@ -3,11 +3,11 @@ kind: ConfigMap
 metadata:
   name: nginx-conf
 data:
-  nginx.conf: | 
-  
+  nginx.conf: |
+
     server {
-      listen 80; 
-      index index.php index.html
+      listen 80;
+      index index.php index.html;
       root /usr/share/nginx/html;
 
       location ~ \.php$ {
