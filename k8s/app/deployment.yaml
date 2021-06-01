@@ -1,28 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: app
-spec: 
-  selector: 
+spec:
+  selector:
     matchLabels:
       app: app
 
-  template: 
-    metadata: 
-      labels: 
+  template:
+    metadata:
+      labels:
         app: app
-    
+
     spec:
       containers:
       - name: app
         image: img-app-deployment
-        ports: 
+        command: ["/bin/sh", "-c", "ln -s /var/www /usr/share/nginx; php-fpm;"]
+        ports:
         - containerPort: 80
 
-        env: 
+        env:
         - name: DB_PASSWORD
-          valueFrom: 
-            secretKeyRef: 
+          valueFrom:
+            secretKeyRef:
               name: mysql-pass
               key: password
 
@@ -30,17 +31,16 @@ spec:
         - configMapRef:
             name: app-conf
 
-        volumeMounts: 
+        volumeMounts:
         - name: app-conf
           mountPath: /var/www/.env
-          subPath: .env 
+          subPath: .env
 
-      volumes: 
+      volumes:
       - name: app-conf
-        configMap: 
+        configMap:
           name: app-conf
-          items: 
+          items:
             - key: env
               path: .env
 
-      
